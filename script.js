@@ -4,38 +4,33 @@ const parrafo = document.getElementById('texto-magico');
 
 boton.addEventListener('click', () => {
     parrafo.textContent= 'Hola, Mundo con JavaScript!'
-  textoMagico.textContent = '¡Magia Activada!';
+});
+
+document.querySelectorAll('.contenedor-info')
+
+const items = document.querySelectorAll('.contenedor-info');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+}, { threshold: 0.2 });
+
+items.forEach(item => {
+  item.style.opacity = 0;
+  item.style.transform = "translateY(50px)";
+  item.style.transition = "all 2s ease-out";
+  observer.observe(item);
+});
+
+
 
  
-  const form = document.getElementById('login-form');
-const username = document.getElementById('username');
-const password = document.getElementById('password');
-const loginBtn = document.getElementById('login-btn');
-
-username.addEventListener('focus', () => {
-  if (username.placeholder === 'Ingrese su documento') {
-    username.placeholder = '';
-  }
-});
-
-username.addEventListener('blur', () => {
-  if (username.value === '') {
-    username.placeholder = 'Ingrese su documento';
-  }
-});
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault(); 
-
-  
-  if (username.value && password.value) {
-    
-    form.innerHTML = '<h2>Ingresado</h2>';
-  } else {
-    alert('Por favor, ingrese un nombre de usuario y una contraseña válidos.');
-  }
-});
+ 
 
   
 
-}
+
